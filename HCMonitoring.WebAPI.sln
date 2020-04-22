@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30002.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCMonitoring.WebAPI", "HCMonitoring.WebAPI\HCMonitoring.WebAPI.csproj", "{3AD9E46E-7FA2-4E77-BC09-9C13B5B5D5FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCMonitoring.WebAPI.Domain", "HCMonitoring.WebAPI.Domain\HCMonitoring.WebAPI.Domain.csproj", "{BBC4A85E-C3E6-46D8-B48F-AC8B219DE6D4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3AD9E46E-7FA2-4E77-BC09-9C13B5B5D5FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AD9E46E-7FA2-4E77-BC09-9C13B5B5D5FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AD9E46E-7FA2-4E77-BC09-9C13B5B5D5FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AD9E46E-7FA2-4E77-BC09-9C13B5B5D5FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBC4A85E-C3E6-46D8-B48F-AC8B219DE6D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBC4A85E-C3E6-46D8-B48F-AC8B219DE6D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBC4A85E-C3E6-46D8-B48F-AC8B219DE6D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBC4A85E-C3E6-46D8-B48F-AC8B219DE6D4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {96920F5C-9165-4426-AB9A-B1B4E894BC17}
+	EndGlobalSection
+EndGlobal
