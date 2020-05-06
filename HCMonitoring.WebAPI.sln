@@ -3,9 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCMonitoring.WebAPI", "HCMonitoring.WebAPI\HCMonitoring.WebAPI.csproj", "{3AD9E46E-7FA2-4E77-BC09-9C13B5B5D5FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HCMonitoring.WebAPI", "HCMonitoring.WebAPI\HCMonitoring.WebAPI.csproj", "{3AD9E46E-7FA2-4E77-BC09-9C13B5B5D5FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCMonitoring.WebAPI.Domain", "HCMonitoring.WebAPI.Domain\HCMonitoring.WebAPI.Domain.csproj", "{BBC4A85E-C3E6-46D8-B48F-AC8B219DE6D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HCMonitoring.WebAPI.Domain", "HCMonitoring.WebAPI.Domain\HCMonitoring.WebAPI.Domain.csproj", "{BBC4A85E-C3E6-46D8-B48F-AC8B219DE6D4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HCMonitoring.WebAPI.Adapters.HetznerCloud", "HCMonitoring.WebAPI.Adapters.HetznerCloud\HCMonitoring.WebAPI.Adapters.HetznerCloud.csproj", "{8E205F76-0B08-4518-97BC-BDB4D759196C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HCMonitoring.WebAPI.Application", "HCMonitoring.WebAPI.Application\HCMonitoring.WebAPI.Application.csproj", "{51010571-4E6F-4931-A71F-7488AA90654B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Adapters", "Adapters", "{CFCEECDE-5520-4DB3-AFCE-8E4388614D12}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "HCMonitoring.WebAPI.Database", "HCMonitoring.WebAPI.Database\HCMonitoring.WebAPI.Database.sqlproj", "{FBD10347-A90B-4DD9-9D0A-5783C26757E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +29,26 @@ Global
 		{BBC4A85E-C3E6-46D8-B48F-AC8B219DE6D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBC4A85E-C3E6-46D8-B48F-AC8B219DE6D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBC4A85E-C3E6-46D8-B48F-AC8B219DE6D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E205F76-0B08-4518-97BC-BDB4D759196C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E205F76-0B08-4518-97BC-BDB4D759196C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E205F76-0B08-4518-97BC-BDB4D759196C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E205F76-0B08-4518-97BC-BDB4D759196C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51010571-4E6F-4931-A71F-7488AA90654B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51010571-4E6F-4931-A71F-7488AA90654B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51010571-4E6F-4931-A71F-7488AA90654B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51010571-4E6F-4931-A71F-7488AA90654B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBD10347-A90B-4DD9-9D0A-5783C26757E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBD10347-A90B-4DD9-9D0A-5783C26757E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBD10347-A90B-4DD9-9D0A-5783C26757E3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{FBD10347-A90B-4DD9-9D0A-5783C26757E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBD10347-A90B-4DD9-9D0A-5783C26757E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBD10347-A90B-4DD9-9D0A-5783C26757E3}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8E205F76-0B08-4518-97BC-BDB4D759196C} = {CFCEECDE-5520-4DB3-AFCE-8E4388614D12}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {96920F5C-9165-4426-AB9A-B1B4E894BC17}

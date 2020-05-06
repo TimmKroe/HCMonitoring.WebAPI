@@ -4,11 +4,12 @@ using System.Text;
 
 namespace HCMonitoring.WebAPI.Domain.Domain.Entities
 {
-    class ApiKey
+    public class Subscriber
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
-        public string Key { get; set; }
+        public string Email { get; set; }
+        public bool IsActive { get; set; }
+        public int TimesSent { get; set; }
     }
 }

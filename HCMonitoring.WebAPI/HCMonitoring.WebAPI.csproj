@@ -4,5 +4,14 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HCMonitoring.WebAPI.Adapters.HetznerCloud\HCMonitoring.WebAPI.Adapters.HetznerCloud.csproj" />
+    <ProjectReference Include="..\HCMonitoring.WebAPI.Application\HCMonitoring.WebAPI.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+  </ItemGroup>
+
 
 </Project>

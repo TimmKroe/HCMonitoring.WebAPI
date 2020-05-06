@@ -4,11 +4,11 @@ using System.Text;
 
 namespace HCMonitoring.WebAPI.Domain.Domain.Entities
 {
-    class ApiKey
+    public class IPv6
     {
         public Guid Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string Key { get; set; }
+        public string Ip { get; set; }
+        public bool IsBlocked { get; set; }
+        public string[] DnsPtr { get; set; }
     }
 }

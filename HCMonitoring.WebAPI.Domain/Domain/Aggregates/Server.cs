@@ -1,8 +1,9 @@
 ﻿using System;
+using HCMonitoring.WebAPI.Domain.Domain.Entities;
 
-namespace HCMonitoring.WebAPI.Domain.Domain.Entities
+namespace HCMonitoring.WebAPI.Domain.Domain.Aggregates
 {
-    internal class Server
+    public class Server
     {
         public Guid Id { get; set; }
         public int HetznerId { get; set; }
@@ -11,11 +12,8 @@ namespace HCMonitoring.WebAPI.Domain.Domain.Entities
         public DateTime Created { get; set; }
 
         // NETWORK
-        public string Ipv4Ip { get; set; }
-        public string Ipv4DnsPtr { get; set; }
-        public string Ipv6Ip { get; set; }
-        public string Ipv6DnsPtrIp { get; set; }
-        public string Ipv6DnsPtr { get; set; }
+        public IPv4 IPv4 { get; set; }
+        public IPv6 IPv6 { get; set; }
 
         // Floating IPs
 
@@ -23,30 +21,26 @@ namespace HCMonitoring.WebAPI.Domain.Domain.Entities
         public ServerType ServerType { get; set; }
 
         // DATACENTER
-        public int DcId { get; set; }
-        public string DcName { get; set; }
-        public string DcDescription { get; set; }
+        public Datacenter Datacenter { get; set; }
 
         // Image
-        public int ImageId { get; set; }
-        public string ImageName { get; set; }
-        public string ImageDescription { get; set; }
+        public Image Image { get; set; }
 
         // Protection
-        public bool IsProtected { get; set; }
+        public Protection Protection { get; set; }
 
         // Backup Window
         public string BackupWindow { get; set; }
 
         // Traffic
-        public int OutgoingTraffic { get; set; }
-        public int IngoingTraffic { get; set; }
-        public int IncludedTraffic { get; set; }
+        public long OutgoingTraffic { get; set; }
+        public long IngoingTraffic { get; set; }
+        public long IncludedTraffic { get; set; }
 
 
         // per Server Settings
-        public bool IsVisible { get; set; } // if it is visible on the 
-        public bool IsMonitored { get; set; }
-
+        public bool IsVisible { get; set; } // if it is visible on the public status page
+        public bool IsMonitored { get; set; } // if it is monitored (mail notifications etc)
+        public bool IsIpsVisible { get; set; }
     }
 }

@@ -4,11 +4,10 @@ using System.Text;
 
 namespace HCMonitoring.WebAPI.Domain.Domain.Entities
 {
-    class ApiKey
+    public class Protection
     {
         public Guid Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string Key { get; set; }
+        public bool Delete { get; set; }
+        public bool Rebuild { get; set; }
     }
 }
