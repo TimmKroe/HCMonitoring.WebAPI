@@ -6,7 +6,6 @@ namespace HCMonitoring.WebAPI.Domain.Domain.Entities
     public class Image
     {
         public Guid Id { get; set; }
-        [JsonPropertyName("id")]
         public int HetznerId { get; set; }
         public string Type { get; set; }
         public string Status { get; set; }

@@ -25,7 +25,7 @@ namespace HCMonitoring.WebAPI.Application.HcMonitoring.DataTransferObjects
         public string FromServerId { get; set; }
         [JsonPropertyName("bound_to")]
         public string BoundServerId { get; set; } // Backup only
-        [JsonPropertyName("os_flavour")]
+        [JsonPropertyName("os_flavor")]
         public string OsFlavour { get; set; }
         [JsonPropertyName("os_version")]
         public string OsVersion { get; set; }
