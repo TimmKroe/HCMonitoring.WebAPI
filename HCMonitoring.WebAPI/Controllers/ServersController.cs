@@ -20,7 +20,7 @@ namespace HCMonitoring.WebAPI.Controllers
         {
             GetAllServersCommand command = new GetAllServersCommand();
             
-            HetznerCloudApiRepository hetznerCloudApiRepository = new HetznerCloudApiRepository("HERE GOES API KEY");
+            HetznerCloudApiRepository hetznerCloudApiRepository = new HetznerCloudApiRepository("SzNnpA76l2hqJgMFyZCPyXDFKt5gZpek4t3N9RiiRGnrVmQuMjAkVXBTcHhbYsFT");
 
             GetAllServersCommandHandler commandHandler = new GetAllServersCommandHandler(hetznerCloudApiRepository);
             var servers = await commandHandler.Handle(command);
