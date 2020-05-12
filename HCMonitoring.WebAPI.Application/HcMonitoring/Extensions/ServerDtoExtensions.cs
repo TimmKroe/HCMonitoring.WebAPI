@@ -29,5 +29,28 @@ namespace HCMonitoring.WebAPI.Application.HcMonitoring.Mappers
 
             return server;
         }
+
+        public static ServerDto ToServerDto(this Server server)
+        {
+            var dto = new ServerDto();
+
+            dto.Id = server.Id;
+            dto.HetznerId = server.HetznerId;
+            dto.Name = server.Name;
+            dto.Status = server.Status;
+            dto.Created = server.Created;
+            dto.PublicNet.IPv4 = server.IPv4.ToIPv4Dto();
+            dto.PublicNet.IPv6 = server.IPv6.ToIPv6Dto();
+            dto.ServerType = server.ServerType.ToServerTypeDto();
+            dto.Datacenter = server.Datacenter.ToDatacenterDto();
+            dto.Image = server.Image.ToImageDto();
+            dto.Protection = server.Protection.ToProtectionDto();
+            dto.BackupWindow = server.BackupWindow;
+            dto.OutgoingTraffic = server.OutgoingTraffic;
+            dto.IngoingTraffic = server.IngoingTraffic;
+            dto.IncludedTraffic = server.IncludedTraffic;
+            
+            return dto;
+        }
     }
 }

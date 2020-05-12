@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using HCMonitoring.WebAPI.Application.HcMonitoring.DataTransferObjects;
 using HCMonitoring.WebAPI.Domain.Domain.Entities;
@@ -54,6 +55,27 @@ namespace HCMonitoring.WebAPI.Application.HcMonitoring.Mappers
             i.OsFlavour = dto.OsFlavour;
             i.OsVersion = dto.OsVersion;
 
+            return i;
+        }
+
+        public static ImageDto ToImageDto(this Image image)
+        {
+            var i = new ImageDto();
+            
+            i.Id = image.Id;
+            i.HetznerId = image.HetznerId;
+            i.Type = image.Type;
+            i.Status = image.Status;
+            i.Name = image.Name;
+            i.Description = image.Description;
+            i.ImageSize = image.ImageSize.ToString(CultureInfo.InvariantCulture);
+            i.DiskSize = image.DiskSize;
+            i.Created = image.Created;
+            i.FromServerId = image.FromServerId.ToString();
+            i.BoundServerId = image.BoundServerId.ToString();
+            i.OsFlavour = image.OsFlavour;
+            i.OsVersion = image.OsVersion;
+            
             return i;
         }
     }

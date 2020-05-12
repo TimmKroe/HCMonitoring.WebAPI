@@ -16,5 +16,14 @@ namespace HCMonitoring.WebAPI.Application.HcMonitoring.Mappers
 
             return p;
         }
+
+        public static ProtectionDto ToProtectionDto(this Protection protection)
+        {
+            var p = new ProtectionDto();
+            p.Delete = protection.Delete;
+            p.Rebuild = protection.Rebuild;
+
+            return p;
+        }
     }
 }

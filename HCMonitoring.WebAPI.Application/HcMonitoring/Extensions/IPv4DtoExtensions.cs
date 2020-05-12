@@ -17,5 +17,16 @@ namespace HCMonitoring.WebAPI.Application.HcMonitoring.Mappers
 
             return ip;
         }
+
+        public static IPv4Dto ToIPv4Dto(this IPv4 ipv4)
+        {
+            var ip = new IPv4Dto();
+            
+            ip.Ip = ipv4.Ip;
+            ip.IsBlocked = ipv4.IsBlocked;
+            ip.DnsPtr = ipv4.DnsPtr;
+
+            return ip;
+        }
     }
 }

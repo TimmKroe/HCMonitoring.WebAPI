@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using HCMonitoring.WebAPI.Application.HcMonitoring.DataTransferObjects;
+using HCMonitoring.WebAPI.Domain.Domain.Aggregates;
 
 namespace HCMonitoring.WebAPI.Application.HcMonitoring.Ports
 {
@@ -10,8 +11,11 @@ namespace HCMonitoring.WebAPI.Application.HcMonitoring.Ports
     {
         public Task<List<ServerDto>> GetAllServersAsync();
         public Task<ServerDto> GetServerAsync(Guid id);
-        public void InsertServerAsync(List<ServerDto> serversDtos);
-        public void UpdateServerAsync(ServerDto serverDto);
-        public void DeleteServerAsync(Guid id);
+        public Task InsertServersAsync(List<ServerDto> servers);
+        public Task InsertServerAsync(ServerDto serverDto);
+        public Task UpdateServerAsync(ServerDto serverDto);
+        public Task DeleteServerAsync(Guid id);
+
+        public Task<ServerDto> CheckForExistingServer(ServerDto dto);
     }
 }

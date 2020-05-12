@@ -7,6 +7,7 @@ namespace HCMonitoring.WebAPI.Application.HcMonitoring.DataTransferObjects
 {
     public class DatacenterDto
     {
+        public Guid Id { get; set; }
         [JsonPropertyName("id")]
         public int HetznerId { get; set; }
         [JsonPropertyName("name")]

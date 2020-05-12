@@ -1,0 +1,1 @@
+﻿SELECT * FROM [dbo].[Servers] LIMIT 100;

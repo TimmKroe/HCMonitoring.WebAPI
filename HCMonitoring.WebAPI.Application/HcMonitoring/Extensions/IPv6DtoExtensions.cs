@@ -17,5 +17,15 @@ namespace HCMonitoring.WebAPI.Application.HcMonitoring.Mappers
 
             return ip;
         }
+
+        public static IPv6Dto ToIPv6Dto(this IPv6 ipv6)
+        {
+            var ip = new IPv6Dto();
+            ip.Ip = ipv6.Ip;
+            ip.IsBlocked = ipv6.IsBlocked;
+            ip.DnsPtr = ipv6.DnsPtr;
+
+            return ip;
+        }
     }
 }

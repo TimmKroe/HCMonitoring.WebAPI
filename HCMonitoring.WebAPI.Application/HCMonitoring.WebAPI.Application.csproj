@@ -8,9 +8,4 @@
     <ProjectReference Include="..\HCMonitoring.WebAPI.Domain\HCMonitoring.WebAPI.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="HcMonitoring\CommandsAndQueries\Queries\" />
-    <Folder Include="HcMonitoring\CommandsAndQueries\QueryHandler\" />
-  </ItemGroup>
-
 </Project>

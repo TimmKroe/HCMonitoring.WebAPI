@@ -1,17 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Hangfire;
+using Hangfire.SqlServer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Hangfire;
-using Hangfire.SqlServer;
+using System;
+using HCMonitoring.WebAPI.BackgroundServices.Services;
 
 namespace HCMonitoring.WebAPI
 {
@@ -45,6 +40,8 @@ namespace HCMonitoring.WebAPI
             // Add the processing server as IHostedService
             services.AddHangfireServer();
 
+            // start job
+            RecurringJob.AddOrUpdate("HCAPI-GET", () => new ApiBackgroundService(Configuration).RunApiBackgroundServiceAsync(), Cron.Minutely);
 
             services.AddControllers();
         }

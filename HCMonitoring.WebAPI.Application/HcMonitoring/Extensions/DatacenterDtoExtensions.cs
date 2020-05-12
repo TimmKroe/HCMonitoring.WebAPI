@@ -18,5 +18,16 @@ namespace HCMonitoring.WebAPI.Application.HcMonitoring.Mappers
 
             return d;
         }
+
+        public static DatacenterDto ToDatacenterDto(this Datacenter datacenter)
+        {
+            var d = new DatacenterDto();
+            d.Id = datacenter.Id;
+            d.HetznerId = datacenter.HetznerId;
+            d.Name = datacenter.Name;
+            d.Description = datacenter.Description;
+
+            return d;
+        }
     }
 }

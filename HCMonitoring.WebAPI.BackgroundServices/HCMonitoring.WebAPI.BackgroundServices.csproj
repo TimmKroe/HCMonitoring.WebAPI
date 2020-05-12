@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HCMonitoring.WebAPI.Adapters.HetznerCloud\HCMonitoring.WebAPI.Adapters.HetznerCloud.csproj" />
+    <ProjectReference Include="..\HCMonitoring.WebAPI.Adapters.SQLServer\HCMonitoring.WebAPI.Adapters.SQLServer.csproj" />
     <ProjectReference Include="..\HCMonitoring.WebAPI.Application\HCMonitoring.WebAPI.Application.csproj" />
   </ItemGroup>
 

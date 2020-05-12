@@ -7,6 +7,7 @@ namespace HCMonitoring.WebAPI.Application.HcMonitoring.DataTransferObjects
     [Serializable]
     public class ServerDto
     {
+        public Guid Id { get; set; }
         [JsonPropertyName("id")]
         public int HetznerId { get; set; }
         [JsonPropertyName("name")]
@@ -50,5 +51,29 @@ namespace HCMonitoring.WebAPI.Application.HcMonitoring.DataTransferObjects
         public long IngoingTraffic { get; set; }
         [JsonPropertyName("included_traffic")]
         public long IncludedTraffic { get; set; }
+
+        public void Update(ServerDto dto)
+        {
+            HetznerId = dto.HetznerId;
+            Name = dto.Name;
+            Status = dto.Status;
+            Created = dto.Created;
+            PublicNet.IPv4 = dto.PublicNet.IPv4;
+            PublicNet.IPv6 = dto.PublicNet.IPv6;
+            ServerType = dto.ServerType;
+            Datacenter = dto.Datacenter;
+            Image = dto.Image;
+            Protection = dto.Protection;
+            BackupWindow = dto.BackupWindow;
+            OutgoingTraffic = dto.OutgoingTraffic;
+            IngoingTraffic = dto.IngoingTraffic;
+            IncludedTraffic = dto.IncludedTraffic;
+        }
+        
+        public override bool Equals(object? obj)
+        {
+            var o = (ServerDto) obj;
+            return base.Equals(obj);
+        }
     }
 }
