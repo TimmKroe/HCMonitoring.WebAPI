@@ -59,6 +59,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CreateDatabase.sql" />
+    <Content Include="DummyData.sql" />
+    <Content Include="OrganizationRepository\DeleteOrganization.sql" />
+    <Content Include="OrganizationRepository\GetAllOrganizations.sql" />
+    <Content Include="OrganizationRepository\GetOrganizationById.sql" />
+    <Content Include="OrganizationRepository\InsertOrganization.sql" />
+    <Content Include="OrganizationRepository\UpdateOrganization.sql" />
+    <Content Include="ServerRepository\DeleteServer.sql" />
     <Content Include="ServerRepository\GetAllServers.sql" />
+    <Content Include="ServerRepository\GetServerById.sql" />
+    <Content Include="ServerRepository\InsertServer.sql" />
+    <Content Include="ServerRepository\UpdateServer.sql" />
   </ItemGroup>
 </Project>
