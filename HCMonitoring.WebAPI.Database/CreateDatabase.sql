@@ -54,7 +54,7 @@ CREATE TABLE [dbo].[ServerType]
 CREATE TABLE [dbo].[IPv4]
 (
 	[Id] UNIQUEIDENTIFIER UNIQUE,
-	[Ip] varchar(12) NOT NULL,
+	[Ip] varchar(15) NOT NULL,
 	[IsBlocked] BIT NOT NULL DEFAULT 1,
 	[DnsPtr] varchar(255),
 
@@ -65,7 +65,7 @@ CREATE TABLE [dbo].[IPv4]
 CREATE TABLE [dbo].[IPv6]
 (
 	[Id] UNIQUEIDENTIFIER UNIQUE,
-	[Ip] varchar(12) NOT NULL,
+	[Ip] varchar(39) NOT NULL,
 	[IsBlocked] BIT NOT NULL DEFAULT 1,
 	[DnsPtr] varchar(255),
 
@@ -111,17 +111,7 @@ CREATE TABLE [dbo].[Image]
     CONSTRAINT PK_ImageId PRIMARY KEY (Id),
 
 	-- Foreign Keys
-	CONSTRAINT FK_Image_StatusId FOREIGN KEY (StatusId) REFERENCES dbo.ServerStatus (Id),
-)
-
-CREATE TABLE [dbo].[Protection]
-(
-	[Id] UNIQUEIDENTIFIER UNIQUE,
-	[Name] varchar(255) NOT NULL,
-	[Description] varchar(255),
-
-    -- Primary Key
-    CONSTRAINT PK_ProtectionId PRIMARY KEY (Id),
+	CONSTRAINT FK_Image_StatusId FOREIGN KEY (StatusId) REFERENCES dbo.ImageStatus (Id),
 )
 
 CREATE TABLE [dbo].[Server]
@@ -137,7 +127,7 @@ CREATE TABLE [dbo].[Server]
 	[ServerTypeId] UNIQUEIDENTIFIER NOT NULL,
 	[DatacenterId] UNIQUEIDENTIFIER NOT NULL,
 	[ImageId] UNIQUEIDENTIFIER NOT NULL,
-	[ProtectionId] UNIQUEIDENTIFIER NOT NULL,
+	[IsProtected] BIT NOT NULL,
 	[BackupWindow] varchar(5) NOT NULL,
 	[OutgoingTraffic] bigint NOT NULL,
 	[IngoingTraffic] bigint NOT NULL,
@@ -159,7 +149,6 @@ CREATE TABLE [dbo].[Server]
 	CONSTRAINT FK_Server_ServerTypeId FOREIGN KEY (ServerTypeId) REFERENCES [dbo].[ServerType] (Id),
 	CONSTRAINT FK_Server_DatacenterId FOREIGN KEY (DatacenterId) REFERENCES [dbo].[Datacenter] (Id),
 	CONSTRAINT FK_Server_ImageId FOREIGN KEY (ImageId) REFERENCES dbo.Image (Id),
-	CONSTRAINT FK_Server_ProtectionId FOREIGN KEY (ProtectionId) REFERENCES dbo.Protection (Id),
 )
 
 
@@ -225,20 +214,6 @@ CREATE TABLE [dbo].[User]
     CONSTRAINT FK_User_OrganizationId FOREIGN KEY (OrganizationId) REFERENCES dbo.Organization (Id)
 )
 
-CREATE TABLE [dbo].[IncidentComment]
-(
-	[Id] UNIQUEIDENTIFIER UNIQUE,
-	[Name] varchar(255) NOT NULL, -- title
-	[Comment] varchar(500) NOT NULL,
-	[AuthorId] UNIQUEIDENTIFIER NOT NULL,
-
-    -- Primary Key
-    CONSTRAINT PK_IncidentCommentId PRIMARY KEY (Id),
-
-    -- Foreign Key
-	CONSTRAINT FK_IncidentComment_AuthorId FOREIGN KEY (AuthorId) REFERENCES dbo.[User] (Id)
-)
-
 CREATE TABLE [dbo].[Incident]
 (
 	[Id] UNIQUEIDENTIFIER UNIQUE,
@@ -258,3 +233,20 @@ CREATE TABLE [dbo].[Incident]
     CONSTRAINT FK_Incident_ServerId FOREIGN KEY (ServerId) REFERENCES dbo.Server (Id)
 )
 Go
+
+CREATE TABLE [dbo].[IncidentComment]
+(
+    [Id] UNIQUEIDENTIFIER UNIQUE,
+    [Name] varchar(255) NOT NULL, -- title
+    [Comment] varchar(500) NOT NULL,
+    [AuthorId] UNIQUEIDENTIFIER NOT NULL,
+    [IncidentId] UNIQUEIDENTIFIER NOT NULL,
+
+    -- Primary Key
+    CONSTRAINT PK_IncidentCommentId PRIMARY KEY (Id),
+
+    -- Foreign Key
+    CONSTRAINT FK_IncidentComment_AuthorId FOREIGN KEY (AuthorId) REFERENCES dbo.[User] (Id),
+    CONSTRAINT FK_IncidentComment_IncidentId FOREIGN KEY (IncidentId) REFERENCES dbo.Incident (Id)
+)
+GO

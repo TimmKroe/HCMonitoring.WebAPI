@@ -1,4 +1,4 @@
-/****** Skript für SelectTopNRows-Befehl aus SSMS ******/
+﻿/****** Skript für SelectTopNRows-Befehl aus SSMS ******/
 SELECT TOP (100) dbo.Server.[Id] AS [ServerId]
       ,dbo.Server.[Name] AS [ServerName] 
       ,dbo.ServerStatus.Name AS [Status]
@@ -24,4 +24,4 @@ SELECT TOP (100) dbo.Server.[Id] AS [ServerId]
   INNER JOIN dbo.IPv6 On dbo.Server.IPv6Id = dbo.IPv6.Id
   INNER JOIN dbo.ServerType ON dbo.Server.ServerTypeId = dbo.ServerType.Id
   INNER JOIN dbo.Datacenter ON dbo.Server.DatacenterId = dbo.Datacenter.Id
-  INNER JOIN dbo.Image ON dbo.Server.ImageId = dbo.Image.Id;
+  INNER JOIN dbo.Image ON dbo.Server.ImageId = dbo.Image.Id WHERE dbo.Server.Id = '7E9A34EE-D2E8-4A04-950A-BD020A269538';
