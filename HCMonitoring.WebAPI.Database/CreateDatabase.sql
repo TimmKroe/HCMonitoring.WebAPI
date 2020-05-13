@@ -1,4 +1,5 @@
-﻿--CREATE DATABASE [HCMonitoring.Main]
+﻿CREATE DATABASE [HCMonitoring.Main]
+Go 
 
 USE [HCMonitoring.Main]
 
@@ -83,16 +84,6 @@ CREATE TABLE [dbo].[Datacenter]
     CONSTRAINT PK_DatacenterId PRIMARY KEY (Id),
 )
 
-CREATE TABLE [dbo].[ImageType]
-(
-	[Id] UNIQUEIDENTIFIER UNIQUE,
-	[Name] varchar(255) NOT NULL,
-	[Description] varchar(255),
-
-    -- Primary Key
-    CONSTRAINT PK_ImageTypeId PRIMARY KEY (Id),
-)
-
 CREATE TABLE [dbo].[ImageStatus]
 (
 	[Id] UNIQUEIDENTIFIER UNIQUE,
@@ -107,7 +98,6 @@ CREATE TABLE [dbo].[Image]
 (
 	[Id] UNIQUEIDENTIFIER UNIQUE,
 	[HetznerId] int NOT NULL,
-	[TypeId] UNIQUEIDENTIFIER NOT NULL,
 	[StatusId] UNIQUEIDENTIFIER NOT NULL,
 	[Name] varchar(255) NOT NULL,
 	[Description] varchar(255) NOT NULL,
@@ -121,7 +111,6 @@ CREATE TABLE [dbo].[Image]
     CONSTRAINT PK_ImageId PRIMARY KEY (Id),
 
 	-- Foreign Keys
-	CONSTRAINT FK_Image_TypeId FOREIGN KEY (TypeId) REFERENCES dbo.ServerType (Id),
 	CONSTRAINT FK_Image_StatusId FOREIGN KEY (StatusId) REFERENCES dbo.ServerStatus (Id),
 )
 
@@ -139,6 +128,7 @@ CREATE TABLE [dbo].[Server]
 (
 	[Id] UNIQUEIDENTIFIER UNIQUE,
 	[HetznerId] int NOT NULL UNIQUE,
+	[OrganizationId] UNIQUEIDENTIFIER NOT NULL,
 	[Name] varchar(255) NOT NULL,
 	[StatusId] UNIQUEIDENTIFIER NOT NULL,
 	[Created_At] DATETIME NOT NULL,
@@ -162,6 +152,7 @@ CREATE TABLE [dbo].[Server]
     CONSTRAINT PK_ServerId PRIMARY KEY (Id),
 
 	-- Foreign Key
+	CONSTRAINT FK_Server_OrganizationId FOREIGN KEY (OrganizationId) REFERENCES dbo.Organization (Id),
 	CONSTRAINT FK_Server_StatusId FOREIGN KEY (StatusId) REFERENCES [dbo].ServerStatus (Id),
 	CONSTRAINT FK_Server_IPv4Id FOREIGN KEY (IPv4Id) REFERENCES [dbo].[IPv4] (Id),
 	CONSTRAINT FK_Server_IPv6Id FOREIGN KEY (IPv6Id) REFERENCES [dbo].[IPv6] (Id),
@@ -176,7 +167,6 @@ CREATE TABLE [dbo].[Backup]
 (
 	[Id] UNIQUEIDENTIFIER UNIQUE,
 	[HetznerId] int NOT NULL,
-	[TypeId] UNIQUEIDENTIFIER NOT NULL,
 	[StatusId] UNIQUEIDENTIFIER NOT NULL,
 	[Name] varchar(255) NOT NULL,
 	[Description] varchar(255) NOT NULL,
@@ -192,7 +182,6 @@ CREATE TABLE [dbo].[Backup]
     CONSTRAINT PK_BackupId PRIMARY KEY (Id),
 
 	-- Foreign Keys
-	CONSTRAINT FK_Backup_TypeId FOREIGN KEY (TypeId) REFERENCES dbo.ImageType (Id),
 	CONSTRAINT FK_Backup_StatusId FOREIGN KEY (StatusId) REFERENCES dbo.ImageStatus (Id),
 	CONSTRAINT FK_Backup_FromServerId FOREIGN KEY (FromServerId) REFERENCES dbo.Server (Id),
 	CONSTRAINT FK_Backup_BoundToServerId FOREIGN KEY (BoundToServerId) REFERENCES dbo.Server (Id),
@@ -202,7 +191,6 @@ CREATE TABLE [dbo].[Snapshot]
 (
 	[Id] UNIQUEIDENTIFIER UNIQUE,
 	[HetznerId] int NOT NULL,
-	[TypeId] UNIQUEIDENTIFIER NOT NULL,
 	[StatusId] UNIQUEIDENTIFIER NOT NULL,
 	[Name] varchar(255) NOT NULL,
 	[Description] varchar(255) NOT NULL,
@@ -218,7 +206,6 @@ CREATE TABLE [dbo].[Snapshot]
     CONSTRAINT PK_SnapshotId PRIMARY KEY (Id),
 
 	-- Foreign Keys
-    CONSTRAINT FK_Snapshot_TypeId FOREIGN KEY (TypeId) REFERENCES dbo.ImageType (Id),
     CONSTRAINT FK_Snapshot_StatusId FOREIGN KEY (StatusId) REFERENCES dbo.ImageStatus (Id),
     CONSTRAINT FK_Snapshot_FromServerId FOREIGN KEY (FromServerId) REFERENCES dbo.Server (Id),
     CONSTRAINT FK_Snapshot_BoundToServerId FOREIGN KEY (BoundToServerId) REFERENCES dbo.Server (Id),
@@ -229,9 +216,13 @@ CREATE TABLE [dbo].[User]
 (
 	[Id] UNIQUEIDENTIFIER UNIQUE,
 	[Name] varchar(255) NOT NULL,
+	[OrganizationId] UNIQUEIDENTIFIER NOT NULL,
 
     -- Primary Key
     CONSTRAINT PK_UserId PRIMARY KEY (Id),
+    
+    -- Foreign Key
+    CONSTRAINT FK_User_OrganizationId FOREIGN KEY (OrganizationId) REFERENCES dbo.Organization (Id)
 )
 
 CREATE TABLE [dbo].[IncidentComment]
@@ -251,6 +242,8 @@ CREATE TABLE [dbo].[IncidentComment]
 CREATE TABLE [dbo].[Incident]
 (
 	[Id] UNIQUEIDENTIFIER UNIQUE,
+	[OrganizationId] UNIQUEIDENTIFIER NOT NULL,
+	[ServerId] UNIQUEIDENTIFIER NOT NULL,
 	[Name] varchar(255) NOT NULL,
 	[Description] varchar(255) NOT NULL,
 	[AuthorId] UNIQUEIDENTIFIER NOT NULL,
@@ -260,5 +253,8 @@ CREATE TABLE [dbo].[Incident]
     CONSTRAINT PK_IncidentId PRIMARY KEY (Id),
 
 	-- Foreign Key
-    CONSTRAINT FK_Incident_AuthorId FOREIGN KEY (AuthorId) REFERENCES dbo.[User] (Id)
+    CONSTRAINT FK_Incident_AuthorId FOREIGN KEY (AuthorId) REFERENCES dbo.[User] (Id),
+    CONSTRAINT FK_Incident_OrganizationId FOREIGN KEY (OrganizationId) REFERENCES dbo.Organization (Id),
+    CONSTRAINT FK_Incident_ServerId FOREIGN KEY (ServerId) REFERENCES dbo.Server (Id)
 )
+Go
