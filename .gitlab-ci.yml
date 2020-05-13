@@ -18,9 +18,9 @@ test:
 release:
   stage: release
   only:
-    - master
+    - tags
   artifacts:
     paths:
       - publish/
   script:
-    - dotnet publish -c Release -o ../publish MyApp/MyApp.csproj
+    - dotnet publish -c Release -o ../publish HCMonitoring.WebAPI/HCMonitoring.WebAPI.csproj
